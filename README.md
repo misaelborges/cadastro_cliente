@@ -19,7 +19,7 @@
 
 ### Regras para CADASTRO DE CLIENTES
 - Não poderá haver CNPJ duplicado
-- Os campos codigo e dataCadastro eles se auto implementam sozinhos
+- Os campos codigo e dataCadastro eles se auto implementam sozinhos. O campo codigo vai gerar valores de forma automaticas, enquanto o campo dataCadastro vai pegar a data atual do sistema do computador
 
 **__Exemplo de como deve ser o cadastro de um cliente:__**
 ``` JSON
