@@ -1,41 +1,40 @@
 package com.useall.cadastro_cliente.domain.services;
 
+import com.useall.cadastro_cliente.domain.exception.ClienteNaoEcontradoException;
 import com.useall.cadastro_cliente.domain.model.Cliente;
 import com.useall.cadastro_cliente.domain.repositories.IClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public class ClienteServiceImpl implements IClienteService{
+public class ClienteService {
 
     @Autowired
     private IClienteRepository repository;
 
-    @Override
     public List<Cliente> bucarCliente() {
         return repository.findAll();
     }
 
-    @Override
-    public Optional<?> buscarClientePorId(Long codigo) {
-        return repository.findById(codigo);
+    public Cliente buscarClientePorId(Long id) {
+        return buscador(id);
     }
 
-    @Override
     public Cliente salvarCliente(Cliente cliente) {
         return repository.save(cliente);
     }
 
-    @Override
     public Cliente atualizarCliente(Cliente cliente) {
         return repository.save(cliente);
     }
 
-    @Override
     public void excluirCliente(Long codigo) {
         repository.deleteById(codigo);
+    }
+
+    public Cliente buscador(Long id) {
+        return repository.findById(id).orElseThrow(() -> new ClienteNaoEcontradoException(id));
     }
 }
