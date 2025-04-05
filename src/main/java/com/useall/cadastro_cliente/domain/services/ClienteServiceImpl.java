@@ -1,7 +1,7 @@
-package com.useall.cadastro_cliente.services;
+package com.useall.cadastro_cliente.domain.services;
 
-import com.useall.cadastro_cliente.model.Cliente;
-import com.useall.cadastro_cliente.repositories.IClienteRepository;
+import com.useall.cadastro_cliente.domain.model.Cliente;
+import com.useall.cadastro_cliente.domain.repositories.IClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

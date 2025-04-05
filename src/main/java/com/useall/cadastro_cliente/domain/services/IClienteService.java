@@ -1,6 +1,6 @@
-package com.useall.cadastro_cliente.services;
+package com.useall.cadastro_cliente.domain.services;
 
-import com.useall.cadastro_cliente.model.Cliente;
+import com.useall.cadastro_cliente.domain.model.Cliente;
 
 import java.util.List;
 import java.util.Optional;
