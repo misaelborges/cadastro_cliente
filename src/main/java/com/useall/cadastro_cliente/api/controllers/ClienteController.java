@@ -1,7 +1,7 @@
-package com.useall.cadastro_cliente.controllers;
+package com.useall.cadastro_cliente.api.controllers;
 
-import com.useall.cadastro_cliente.model.Cliente;
-import com.useall.cadastro_cliente.services.ClienteServiceImpl;
+import com.useall.cadastro_cliente.domain.model.Cliente;
+import com.useall.cadastro_cliente.domain.services.ClienteServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
