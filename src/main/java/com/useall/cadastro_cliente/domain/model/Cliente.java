@@ -13,12 +13,12 @@ public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long codigo;
+    private Long id;
 
     private String nome;
 
-    @Column(name = "cnpj")
-    private int cnpj;
+    @Column(name = "cnpj", unique = true)
+    private String cnpj;
 
     @CreationTimestamp
     private LocalDate dataCadastro;
@@ -30,22 +30,22 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(String nome, int cnpj, String endereco, String telefone) {
+    public Cliente(String nome, String cnpj, String endereco, String telefone) {
         this.nome = nome;
         this.cnpj = cnpj;
         this.endereco = endereco;
         this.telefone = telefone;
     }
 
-    public Long getCodigo() {
-        return codigo;
+    public Long getId() {
+        return id;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public int getCnpj() {
+    public String getCnpj() {
         return cnpj;
     }
 
