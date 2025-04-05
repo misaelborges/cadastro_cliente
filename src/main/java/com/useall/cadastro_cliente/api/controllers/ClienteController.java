@@ -1,7 +1,7 @@
 package com.useall.cadastro_cliente.api.controllers;
 
 import com.useall.cadastro_cliente.domain.model.Cliente;
-import com.useall.cadastro_cliente.domain.services.ClienteServiceImpl;
+import com.useall.cadastro_cliente.domain.services.ClienteService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +15,7 @@ import java.util.List;
 public class ClienteController {
 
     @Autowired
-    private ClienteServiceImpl service;
+    private ClienteService service;
 
     @GetMapping
     public ResponseEntity<List<Cliente>> bucarCliente() {
