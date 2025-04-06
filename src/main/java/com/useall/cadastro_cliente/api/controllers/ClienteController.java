@@ -1,5 +1,7 @@
 package com.useall.cadastro_cliente.api.controllers;
 
+import com.useall.cadastro_cliente.api.ClienteRequestDisassembler;
+import com.useall.cadastro_cliente.api.dto.ClienteRequestDTO;
 import com.useall.cadastro_cliente.domain.model.Cliente;
 import com.useall.cadastro_cliente.domain.services.ClienteService;
 import jakarta.validation.Valid;
@@ -17,6 +19,9 @@ public class ClienteController {
     @Autowired
     private ClienteService service;
 
+    @Autowired
+    private ClienteRequestDisassembler clienteRequestDisassembler;
+
     @GetMapping
     public ResponseEntity<List<Cliente>> bucarCliente() {
         return ResponseEntity.status(200).body(service.bucarCliente());
@@ -28,7 +33,8 @@ public class ClienteController {
     }
 
     @PostMapping
-    public ResponseEntity<Cliente> salvarCliente(@Valid @RequestBody Cliente cliente) {
+    public ResponseEntity<Cliente> salvarCliente(@Valid @RequestBody ClienteRequestDTO clienteRequestDTO) {
+        Cliente cliente = clienteRequestDisassembler.toDomainObject(clienteRequestDTO);
         return ResponseEntity.status(201).body(service.salvarCliente(cliente));
     }
 
