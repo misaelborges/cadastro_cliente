@@ -33,7 +33,7 @@ public class ClienteController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<ClienteResponseResumoDTO> bucarCliente() {
-        List<Cliente> clienteList = service.bucarCliente();
+        List<Cliente> clienteList = service.listarClientesAtivos();
         List<ClienteResponseResumoDTO> clienteResponseDTOS = clienteResponseAssembler.toCollectionModel(clienteList);
         return clienteResponseDTOS;
     }
@@ -46,9 +46,10 @@ public class ClienteController {
     }
 
     @PostMapping
-    public ResponseEntity<Cliente> salvarCliente(@Valid @RequestBody ClienteRequestDTO clienteRequestDTO) {
+    public ResponseEntity<ClienteResponseDTO> salvarCliente(@Valid @RequestBody ClienteRequestDTO clienteRequestDTO) {
         Cliente cliente = clienteRequestDisassembler.toDomainObject(clienteRequestDTO);
-        return ResponseEntity.status(201).body(service.salvarCliente(cliente));
+        service.salvarCliente(cliente);
+        return ResponseEntity.status(201).body(clienteResponseAssembler.ToModel(cliente));
     }
 
     @PutMapping(value = "/{id}")
