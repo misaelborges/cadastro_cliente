@@ -1,0 +1,2 @@
+ALTER TABLE tbl_cliente
+ADD COLUMN ativo TINYINT(1) DEFAULT 1;
