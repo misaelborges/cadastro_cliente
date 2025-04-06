@@ -1,6 +1,6 @@
 package com.useall.cadastro_cliente.domain.services;
 
-import com.useall.cadastro_cliente.domain.exception.ClienteNaoEcontradoException;
+import com.useall.cadastro_cliente.domain.exception.ClienteNaoEncontradoException;
 import com.useall.cadastro_cliente.domain.model.Cliente;
 import com.useall.cadastro_cliente.domain.repositories.IClienteRepository;
 import jakarta.transaction.Transactional;
@@ -15,14 +15,14 @@ public class ClienteService {
     @Autowired
     private IClienteRepository repository;
 
-    public List<Cliente> bucarCliente() {
+    public List<Cliente> listarClientesAtivos() {
         return repository.findByAtivoTrue();
     }
 
     public Cliente buscarClientePorId(Long id) {
         Cliente cliente = buscador(id);
         if (cliente.getAtivo().equals(false)) {
-            throw new ClienteNaoEcontradoException(id);
+            throw new ClienteNaoEncontradoException(id);
         }
         return cliente;
     }
@@ -42,6 +42,6 @@ public class ClienteService {
     }
 
     public Cliente buscador(Long id) {
-        return repository.findById(id).orElseThrow(() -> new ClienteNaoEcontradoException(id));
+        return repository.findById(id).orElseThrow(() -> new ClienteNaoEncontradoException(id));
     }
 }
