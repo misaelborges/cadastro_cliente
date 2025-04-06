@@ -31,7 +31,7 @@ public class Cliente {
 
     private String telefone;
 
-    private Boolean ativo;
+    private Boolean ativo = true;
 
     public Cliente() {
     }
