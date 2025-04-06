@@ -45,6 +45,13 @@ public class ClienteController {
         return clienteResponseAssembler.ToModel(cliente);
     }
 
+    @GetMapping(value = "/cnpj/{cnpj}")
+    @ResponseStatus(HttpStatus.OK)
+    public ClienteResponseDTO buscarClientePorCnpj(@PathVariable String cnpj) {
+        Cliente cliente = service.buscarClientePorCnpj(cnpj);
+        return clienteResponseAssembler.ToModel(cliente);
+    }
+
     @PostMapping
     public ResponseEntity<ClienteResponseDTO> salvarCliente(@Valid @RequestBody ClienteRequestDTO clienteRequestDTO) {
         Cliente cliente = clienteRequestDisassembler.toDomainObject(clienteRequestDTO);
