@@ -22,9 +22,9 @@ public class ClienteController {
         return ResponseEntity.status(200).body(service.bucarCliente());
     }
 
-    @GetMapping(value = "/{codigo}")
-    public ResponseEntity<?> buscarClientePorId(@PathVariable Long codigo) {
-        return ResponseEntity.status(200).body(service.buscarClientePorId(codigo));
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<?> buscarClientePorId(@PathVariable Long id) {
+        return ResponseEntity.status(200).body(service.buscarClientePorId(id));
     }
 
     @PostMapping
@@ -37,9 +37,9 @@ public class ClienteController {
         return ResponseEntity.status(200).body(service.atualizarCliente(cliente));
     }
 
-    @DeleteMapping(value = "/{codigo}")
-    public ResponseEntity<?> excluirCliente(@PathVariable Long codigo) {
-        service.excluirCliente(codigo);
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<?> excluirCliente(@PathVariable Long id) {
+        service.excluirCliente(id);
         return ResponseEntity.status(204).build();
     }
 

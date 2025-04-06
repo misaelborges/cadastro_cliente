@@ -30,8 +30,8 @@ public class ClienteService {
         return repository.save(cliente);
     }
 
-    public void excluirCliente(Long codigo) {
-        repository.deleteById(codigo);
+    public void excluirCliente(Long id) {
+        repository.deleteById(id);
     }
 
     public Cliente buscador(Long id) {
