@@ -1,22 +1,26 @@
 package com.useall.cadastro_cliente.domain.model;
 
+import com.useall.cadastro_cliente.api.dto.ClienteRequestDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.validator.constraints.br.CNPJ;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
-@Table(name = "tbl_cliente", uniqueConstraints={@UniqueConstraint(columnNames = "cnpj")})
+@Table(name = "tbl_cliente")
 public class Cliente {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nome;
 
+    @CNPJ
     @Column(name = "cnpj", unique = true)
     private String cnpj;
 
@@ -37,27 +41,54 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    public Long getId() {
-        return id;
+    public Cliente(ClienteRequestDTO clienteRequestDTO) {
+        this.nome = clienteRequestDTO.getNome();
+        this.cnpj = clienteRequestDTO.getCnpj();
+        this.endereco = clienteRequestDTO.getEndereco();
+        this.telefone = clienteRequestDTO.getTelefone();
     }
 
     public String getNome() {
         return nome;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public String getCnpj() {
         return cnpj;
     }
 
-    public LocalDate getDataCadastro() {
-        return dataCadastro;
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 
     public String getEndereco() {
         return endereco;
     }
 
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
     public String getTelefone() {
         return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Cliente cliente = (Cliente) o;
+        return Objects.equals(id, cliente.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }
