@@ -31,6 +31,8 @@ public class Cliente {
 
     private String telefone;
 
+    private Boolean ativo;
+
     public Cliente() {
     }
 
@@ -86,6 +88,14 @@ public class Cliente {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public Boolean getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
     }
 
     @Override
