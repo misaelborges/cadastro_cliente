@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClienteService {
@@ -39,6 +40,14 @@ public class ClienteService {
     public void excluirCliente(Long id) {
         Cliente cliente = buscador(id);
         cliente.setAtivo(false);
+    }
+
+    public Cliente buscarClientePorCnpj(String cnpj) {
+        Optional<Cliente> cliente = repository.findByCnpj(cnpj);
+        if (cliente.isEmpty()) {
+            throw new ClienteNaoEncontradoException(String.format("Não existe nenhum cliente com o cnpj %s", cnpj));
+        }
+        return cliente.get();
     }
 
     public Cliente buscador(Long id) {
