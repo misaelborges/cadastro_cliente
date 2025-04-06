@@ -1,4 +1,4 @@
-package com.useall.cadastro_cliente.api;
+package com.useall.cadastro_cliente.api.assembler;
 
 import com.useall.cadastro_cliente.api.dto.ClienteResponseDTO;
 import com.useall.cadastro_cliente.api.dto.ClienteResponseResumoDTO;

@@ -1,7 +1,7 @@
 package com.useall.cadastro_cliente.api.controllers;
 
-import com.useall.cadastro_cliente.api.ClienteRequestDisassembler;
-import com.useall.cadastro_cliente.api.ClienteResponseAssembler;
+import com.useall.cadastro_cliente.api.assembler.ClienteRequestDisassembler;
+import com.useall.cadastro_cliente.api.assembler.ClienteResponseAssembler;
 import com.useall.cadastro_cliente.api.dto.ClienteRequestDTO;
 import com.useall.cadastro_cliente.api.dto.ClienteResponseDTO;
 import com.useall.cadastro_cliente.api.dto.ClienteResponseResumoDTO;

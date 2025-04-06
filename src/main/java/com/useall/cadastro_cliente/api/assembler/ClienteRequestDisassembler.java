@@ -1,8 +1,7 @@
-package com.useall.cadastro_cliente.api;
+package com.useall.cadastro_cliente.api.assembler;
 
 import com.useall.cadastro_cliente.api.dto.ClienteRequestDTO;
 import com.useall.cadastro_cliente.api.dto.ClienteResquestAtualizacaoDTO;
-import com.useall.cadastro_cliente.core.modelmapper.ModelMapperConfig;
 import com.useall.cadastro_cliente.domain.model.Cliente;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
