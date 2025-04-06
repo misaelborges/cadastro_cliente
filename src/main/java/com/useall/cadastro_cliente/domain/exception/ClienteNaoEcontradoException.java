@@ -10,6 +10,6 @@ public class ClienteNaoEcontradoException extends ErroDeNegocioException{
     }
 
     public ClienteNaoEcontradoException(Long id) {
-        super(String.format("O cliente com o $d naão foi encontrado no nosso sistemas", id));
+        super(String.format("O cliente com o id %d não foi encontrado no nosso sistema", id));
     }
 }
