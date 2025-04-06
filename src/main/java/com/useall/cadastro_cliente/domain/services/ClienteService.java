@@ -3,6 +3,7 @@ package com.useall.cadastro_cliente.domain.services;
 import com.useall.cadastro_cliente.domain.exception.ClienteNaoEcontradoException;
 import com.useall.cadastro_cliente.domain.model.Cliente;
 import com.useall.cadastro_cliente.domain.repositories.IClienteRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +16,15 @@ public class ClienteService {
     private IClienteRepository repository;
 
     public List<Cliente> bucarCliente() {
-        return repository.findAll();
+        return repository.findByAtivoTrue();
     }
 
     public Cliente buscarClientePorId(Long id) {
-        return buscador(id);
+        Cliente cliente = buscador(id);
+        if (cliente.getAtivo().equals(false)) {
+            throw new ClienteNaoEcontradoException(id);
+        }
+        return cliente;
     }
 
     public Cliente salvarCliente(Cliente cliente) {
@@ -30,8 +35,10 @@ public class ClienteService {
         return repository.save(cliente);
     }
 
+    @Transactional
     public void excluirCliente(Long id) {
-        repository.deleteById(id);
+        Cliente cliente = buscador(id);
+        cliente.setAtivo(false);
     }
 
     public Cliente buscador(Long id) {
