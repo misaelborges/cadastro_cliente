@@ -48,6 +48,10 @@ public class Cliente {
         this.telefone = clienteRequestDTO.getTelefone();
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -62,6 +66,10 @@ public class Cliente {
 
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
+    }
+
+    public LocalDate getDataCadastro() {
+        return dataCadastro;
     }
 
     public String getEndereco() {
